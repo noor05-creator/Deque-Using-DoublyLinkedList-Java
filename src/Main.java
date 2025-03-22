@@ -64,6 +64,16 @@ class deque{
         front = front.next;
 
         //if there was a single node only
+        /*alternatively you can do
+        if(front == rear)
+        {
+        front = rear = null;
+        }
+        else{
+        front = front.next;
+        front.prev = null;
+       }
+         */
         if(front != null)
         {
 
@@ -81,6 +91,19 @@ class deque{
             return;
         }
         rear = rear.prev;
+
+        /*
+        alternatively you can do is
+        if(rear == null) //to check single node case
+        {
+        front = rear = null;
+        }
+        else
+        {
+        rear = rear.prev;
+        rear.next = null;
+        }
+         */
         if(rear!= null){
             rear.next = null;
         }
@@ -115,8 +138,6 @@ class deque{
 
 
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
         deque dq1 = new deque();
@@ -126,6 +147,8 @@ public class Main {
         dq1.pushBack(2);
         dq1.print();
         dq1.popFront();
+        dq1.print();
+        dq1.popBack();
         dq1.print();
 
 
