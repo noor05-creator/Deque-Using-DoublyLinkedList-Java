@@ -1,4 +1,95 @@
 
+class Node{
+    int data;
+    Node prev;
+    Node next;
+
+    Node(int data){
+        this.data = data;
+        prev = next = null;
+    }
+}
+
+class deque{
+    Node front;
+    Node rear;
+    deque(){
+        front = rear = null;
+    }
+
+    boolean isEmpty()
+    {
+        if(front == null && rear == null)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    void pushFront(int data)
+    {
+        Node newNode = new Node(data);
+        if(isEmpty()){
+            front = rear = newNode;
+            return;
+        }
+        newNode.next = front;
+        front.prev = newNode;
+       // newNode.prev = null;
+        front = newNode;
+
+
+    }
+    void pushBack(int data)
+    {
+        Node newNode = new Node(data);
+        if(isEmpty())
+        {
+            front = rear = newNode;
+            return;
+        }
+        newNode.prev = rear;
+        rear.next = newNode;
+        //newNode.next = null;
+        rear = newNode;
+    }
+    void popFront()
+    {
+        if(isEmpty())
+        {
+            System.out.println("Nothing to pop");
+            return;
+        }
+
+        front = front.next;
+        //if there was a single node only
+        if(front != null)
+        {
+            front.prev = null;
+        }
+        else{
+            rear = null;
+        }
+    }
+    void popBack()
+    {
+        if(isEmpty())
+        {
+            System.out.println("Nothing to pop");
+            return;
+        }
+        rear = rear.prev;
+        if(rear!= null){
+            rear.next = null;
+        }
+        else{
+            front = null;
+        }
+    }
+
+
+}
+
 
 
 
