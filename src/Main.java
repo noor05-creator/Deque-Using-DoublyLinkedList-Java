@@ -62,9 +62,11 @@ class deque{
         }
 
         front = front.next;
+
         //if there was a single node only
         if(front != null)
         {
+
             front.prev = null;
         }
         else{
@@ -87,6 +89,24 @@ class deque{
         }
     }
 
+    void print()
+    {
+        if(isEmpty())
+        {
+            System.out.println("Deque is empty");
+            return;
+        }
+
+        Node temp = front;
+        while(temp!= null)
+        {
+            System.out.print(temp.data +" ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+
+
 
 }
 
@@ -99,14 +119,15 @@ class deque{
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        deque dq1 = new deque();
+        //dq1.popBack();
+        //dq1.popFront();
+        dq1.pushFront(1);
+        dq1.pushBack(2);
+        dq1.print();
+        dq1.popFront();
+        dq1.print();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+
         }
     }
-}
